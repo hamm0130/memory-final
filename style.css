@@ -1,0 +1,7 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* set the grid as a 4x1, 4x2, 4x3 per difficulty so it's easier to style
+            mobile should be vertical grid, and desktop should be landscape
+*/
