@@ -4,28 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Memorable Eggs</title>
-    <script src="script.js"></script>
+    <title>Memory</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
+
 <body class="main-container">
-    <h1>Memorable Eggs</h1>
-    <div class="difficulty">
-        <h2>How do you like your eggs flipped?</h2>
-        <!-- each difficulty should have a variable assigned to it with a value (number) of cards per selection (ie 4, 8, 12) -->
-        <div class="easy">
-            <h3>EASY</h3>
-        </div>
-        <div class="medium">
-            <h3>MEDIUM</h3>
-        </div>
-        <div class="hard">
-            <h3>HARD</h3>
-        </div>
-        <!-- hide this after they have selected the difficulty and then reveal the tiles -->
+    <h1>Memory</h1>
+    <h3>Choose your difficulty!</h3>
+    <div id="difficulty" class="difficulty">    
+        <div id="easy" class="button">Easy Mode</div>
+        <div id="med" class="button">Medium Mode</div>
+        <div id="hard" class="button">Hard Mode</div>
     </div>
-    <div class="cards">
-        <!-- push cards to here -->
-    </div>
+    <div id="cards-overlay" class="overlay">Here are your cards!</div>
 </body>
+
 </html>

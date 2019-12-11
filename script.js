@@ -1,29 +1,123 @@
-// pseudo code:
+function shuffle (src) {
+    const copy = [...src]
+  
+    const length = copy.length
+    for (let i = 0; i < length; i++) {
+      const x = copy[i]
+      const y = Math.floor(Math.random() * length)
+      const z = copy[y]
+      copy[i] = z
+      copy[y] = x
+    }
+  
+    if (typeof src === 'string') {
+      return copy.join('')
+    }
+  
+    return copy
+  }
 
-// 3 difficulties with 3 values each (number of tiles) 
-// use a for loop to iterate the number of tiles to create with random positions for the icons;
-// easy difficulty = 4 tiles, medium = 8 tiles, hard = 12 tiles
-// selecting difficulty should reveal the corresponding number of tiles
-// tiles need to be laid out in responsive and user-friendly manner (display grid with breakpoints for screen sizes (mobile, desktop))
-// push the tiles with js into a container div
-// each tile needs to have a pattern that is hidden from player (ie blank square)
-// make sure each starting tile has a flipped status, and make a function on click to flip/reveal the tile
-// use david walsh css flip animation tutorial
-// use font awesome icons
-// if the second tile matches the first one, there should be an action/animation with it the match
-// > ie stay open, fade out, disappear,
-// if tiles do not match, tiles should flip back/hide tiles again and must be animated
-// when all the cards have been matched, ending must be animated with css
-// at the end the player should be presented with the option to play again 
-// if "play again" has been chosen, hide everything and revert back to the difficulty selection screen
 
-// start level (number)
-// Game.totalmatches=number
-// game.matches++
+const cards = [`<img src="/images/clubs.png" alt="clubs">`,
+`<img src="/images/diamonds.png" alt="diamonds">`,
+`<img src="/images/hearts.png" alt="hearts">`,
+`<img src="/images/spades.png" alt="spades">`,
+`<img src="/images/clubs.png" alt="clubs">`,
+`<img src="/images/diamonds.png" alt="diamonds">`,
+`<img src="/images/hearts.png" alt="hearts">`,
+`<img src="/images/spades.png" alt="spades">`
+]
 
-// if (game.matches === game.totalmatches) {
-//     end game, play again option
+const deck = []
+
+let gameDifficulty = [
+{
+    easy: {
+        text:"Easy"
+    }
+},
+{
+    medium: {
+        text:"Medium"
+    }
+},
+{
+    hard: {
+        text:"Hard"
+    }
+}]
+
+gameDifficulty.forEach((o, i) => o.id = i + 1);
+
+for (const card of cards) {
+        deck.push({cards})
+}
+
+const game = {
+    flippedCards: [],
+    cards: []
+}
+
+function deal (
+    numberOfCards = ((gameDifficulty.id) * 2)) {
+    game.flippedCards = []
+    game.cards = shuffle(deck)
+
+    const hand = game.cards.splice(0, numberOfCards)
+
+    $hand.innerHTML = hand.map(card => 
+    `<div class="cards">
+    <img src="/images/spades.png" alt="spades">
+    <img src="/images/hearts.png" alt="hearts">
+    <img src="/images/clubs.png" alt="clubs">
+    <img src="/images/diamonds.png" alt="diamonds">
+    <img src="/images/hearts.png" alt="hearts">
+    <img src="/images/spades.png" alt="spades">
+    <img src="/images/clubs.png" alt="clubs">
+    <img src="/images/diamonds.png" alt="diamonds">
+    </div>`).join('')
+}
+
+// function dealmed (numberOfCards = 8) {
+//     game.selectedCards = []
+//     game.cards = shuffle(deck)
+
+//     const hand = game.cards.splice(0, numberOfCards)
+
+//     $hand.innerHTML = hand.map(card => 
+//     `<div class="cards">
+//     <img src="/images/spades.png" alt="spades">
+//     <img src="/images/hearts.png" alt="hearts">
+//     <img src="/images/clubs.png" alt="clubs">
+//     <img src="/images/diamonds.png" alt="diamonds">
+//     <img src="/images/hearts.png" alt="hearts">
+//     <img src="/images/spades.png" alt="spades">
+//     <img src="/images/clubs.png" alt="clubs">
+//     <img src="/images/diamonds.png" alt="diamonds">
+//     </div>`).join('')
 // }
 
-// use shuffle to randomize cards displayed before they are pushed into the card container on the page
+// function dealhard (numberOfCards = 10) {
+//     game.selectedCards = []
+//     game.cards = shuffle(deck)
 
+//     const hand = game.cards.splice(0, numberOfCards)
+
+//     $hand.innerHTML = hand.map(card => 
+//     `<div class="cards">
+//     <img src="/images/spades.png" alt="spades">
+//     <img src="/images/hearts.png" alt="hearts">
+//     <img src="/images/clubs.png" alt="clubs">
+//     <img src="/images/diamonds.png" alt="diamonds">
+//     <img src="/images/hearts.png" alt="hearts">
+//     <img src="/images/spades.png" alt="spades">
+//     <img src="/images/clubs.png" alt="clubs">
+//     <img src="/images/diamonds.png" alt="diamonds">
+//     </div>`).join('')
+// }
+
+// var newCards = {}
+// let $hand = game.cards;
+var $dealer = document.getElementsByClassName('overlay');
+
+$dealer.addEventListener('click', deal);
