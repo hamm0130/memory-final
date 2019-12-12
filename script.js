@@ -118,6 +118,30 @@ function deal (
 
 // var newCards = {}
 // let $hand = game.cards;
-var $dealer = document.getElementsByClassName('overlay');
+var $dealer = document.getElementsByClassName('overlay')
 
-$dealer.addEventListener('click', deal);
+let $m = document.getElementById('button')
+let $h = document.getElementById('button')
+
+document.addEventListener('click', function(btn){
+        numberOfCards = ((gameDifficulty.id) * 2)
+        game.flippedCards = []
+        game.cards = shuffle(deck)
+    
+        const $hand = game.cards.splice(0, numberOfCards)
+    
+        $dealer.innerHTML = $hand.map(card => 
+        `<div class="cards">
+        <img src="/images/spades.png" alt="spades">
+        <img src="/images/hearts.png" alt="hearts">
+        <img src="/images/clubs.png" alt="clubs">
+        <img src="/images/diamonds.png" alt="diamonds">
+        <img src="/images/hearts.png" alt="hearts">
+        <img src="/images/spades.png" alt="spades">
+        <img src="/images/clubs.png" alt="clubs">
+        <img src="/images/diamonds.png" alt="diamonds">
+        </div>`).join('');
+        var $e = document.getElementsByClassName('button')
+        
+        $e.getElementByClassName('button').classList.add('hide')
+})
